@@ -17,3 +17,7 @@ add_executable(thermal_fea
 target_compile_options(thermal_fea PRIVATE
     -Wall -Wextra -Wpedantic
 )
+
+target_include_directories(thermal_fea PRIVATE
+    ${PROJECT_SOURCE_DIR}/include
+)
