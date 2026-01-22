@@ -1,7 +1,7 @@
 #pragma once
 
-#include <cstddef>
 #include <vector>
+#include <cstddef>
 
 namespace thermal_fea::mesh {
 
@@ -18,6 +18,7 @@ public:
     std::size_t get_nb_nodes() const {
         return nodes_.size();
     }
+
     std::size_t get_nb_elements() const {
         return elements_.size();
     }
