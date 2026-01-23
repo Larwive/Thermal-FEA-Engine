@@ -3,6 +3,7 @@
 #include <cassert>
 #include <cmath>
 #include <cstddef>
+#include <ostream>
 #include <vector>
 
 namespace thermal_fea::linalg {
@@ -27,6 +28,15 @@ public:
   }
 
   double norm() const { return std::sqrt(dot(*this)); }
+
+  friend std::ostream &operator<<(std::ostream &os, const Vector &v) {
+    for (std::size_t i = 0; i < v.size(); ++i) {
+      os << v(i);
+      if (i + 1 < v.size())
+        os << " ";
+    }
+    return os;
+  }
 
 private:
   std::vector<double> data_;
