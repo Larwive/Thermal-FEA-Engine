@@ -16,8 +16,9 @@ add_executable(thermal_fea
     src/linalg/Matrix.cpp
     src/linalg/Vector.cpp
     src/mesh/Mesh.cpp
-    src/solver/conjugate_gradient.cpp
     src/physics/heat_equation.cpp
+    src/solver/assembly.cpp
+    src/solver/conjugate_gradient.cpp
 )
 
 target_compile_options(thermal_fea PRIVATE
