@@ -45,4 +45,4 @@ Matrix3x3 get_Ke(const thermal_fea::mesh::Mesh &mesh,
   return Ke;
 }
 
-}
+} // namespace thermal_fea::physics

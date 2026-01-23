@@ -12,4 +12,4 @@ typedef std::array<std::array<double, 3>, 3> Matrix3x3;
 Matrix3x3 get_Ke(const thermal_fea::mesh::Mesh &mesh,
                  const thermal_fea::mesh::Element &element, const double k);
 
-}
+} // namespace thermal_fea::physics

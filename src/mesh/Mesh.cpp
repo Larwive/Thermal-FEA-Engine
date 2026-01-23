@@ -2,8 +2,8 @@
 #include <vector>
 
 #include "thermal_fea/mesh/Element.hpp"
-#include "thermal_fea/mesh/Node.hpp"
 #include "thermal_fea/mesh/Mesh.hpp"
+#include "thermal_fea/mesh/Node.hpp"
 
 namespace thermal_fea::mesh {
 

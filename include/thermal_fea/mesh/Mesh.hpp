@@ -10,7 +10,8 @@ namespace thermal_fea::mesh {
 
 class Mesh {
 public:
-  Mesh(const std::vector<Node> &nodes, const std::vector<Element> &elements):nodes_(nodes), elements_(elements){};
+  Mesh(const std::vector<Node> &nodes, const std::vector<Element> &elements)
+      : nodes_(nodes), elements_(elements) {};
 
 private:
   std::vector<Node> nodes_;

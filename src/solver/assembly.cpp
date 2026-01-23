@@ -1,7 +1,7 @@
-#include "thermal_fea/linalg/Matrix.hpp"
-#include "thermal_fea/physics/heat_equation.hpp"
-#include "thermal_fea/mesh/Mesh.hpp"
 #include "thermal_fea/solver/assembly.hpp"
+#include "thermal_fea/linalg/Matrix.hpp"
+#include "thermal_fea/mesh/Mesh.hpp"
+#include "thermal_fea/physics/heat_equation.hpp"
 
 namespace thermal_fea::solver {
 
