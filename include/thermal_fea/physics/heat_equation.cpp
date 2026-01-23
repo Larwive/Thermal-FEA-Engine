@@ -1,8 +1,11 @@
-#include "heat_equation.hpp"
 #include <cmath>
+#include <thermal_fea/mesh/Element.hpp>
+#include <thermal_fea/mesh/Mesh.hpp>
+#include <thermal_fea/mesh/Node.hpp>
+#include <thermal_fea/physics/heat_equation.hpp>
 
 std::array<double, 2> node_coords(const thermal_fea::mesh::Node &node) {
-  return {node.x(), node.y()};
+  return {node.x, node.y};
 }
 
 namespace thermal_fea::physics {
@@ -11,7 +14,7 @@ Matrix3x3 get_Ke(const thermal_fea::mesh::Mesh &mesh,
                  const thermal_fea::mesh::Element &element, const double k) {
   std::array<double, 2> coords[3];
   for (int i = 0; i < 3; ++i) {
-    coords[i] = node_coords(mesh.node(element.node(i)));
+    coords[i] = node_coords(mesh.get_node(element.node_ids[i]));
   }
 
   double x10 = coords[1][0] - coords[0][0];
@@ -31,7 +34,7 @@ Matrix3x3 get_Ke(const thermal_fea::mesh::Mesh &mesh,
 
   std::array<double, 2> gradN[3] = {gradN1, gradN2, gradN3};
 
-  Matrix3x3 Ke = {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}};
+  Matrix3x3 Ke = {{{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}};
   for (int i = 0; i < 3; ++i) {
     for (int j = 0; j < 3; ++j) {
       Ke[i][j] +=
@@ -40,4 +43,6 @@ Matrix3x3 get_Ke(const thermal_fea::mesh::Mesh &mesh,
   }
 
   return Ke;
+}
+
 }
