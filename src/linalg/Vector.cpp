@@ -2,7 +2,8 @@
 #include <cmath>
 #include <cstddef>
 #include <ostream>
-#include <thermal_fea/linalg/Vector.hpp>
+
+#include "thermal_fea/linalg/Vector.hpp"
 
 namespace thermal_fea::linalg {
 
