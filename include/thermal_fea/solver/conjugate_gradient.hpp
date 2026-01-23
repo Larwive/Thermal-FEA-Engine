@@ -1,9 +1,10 @@
 #pragma once
 
-#include <vector>
 #include "thermal_fea/linalg/Matrix.hpp"
-
+#include "thermal_fea/linalg/Vector.hpp"
 
 namespace thermal_fea::solver {
-std::vector<double> conjugate_gradient(const thermal_fea::linalg::Matrix &A, const std::vector<double> &b);
+thermal_fea::linalg::Vector
+conjugate_gradient(const thermal_fea::linalg::Matrix &A,
+                   const thermal_fea::linalg::Vector &b);
 } // namespace thermal_fea::solver
