@@ -3,7 +3,7 @@
 #include <cstddef>
 #include <vector>
 
-#include <thermal_fea/linalg/Vector.hpp>
+#include "thermal_fea/linalg/Vector.hpp"
 
 namespace thermal_fea::linalg {
 
