@@ -4,8 +4,7 @@ A C++ finite element solver for steady-state heat conduction problems.
 
 ## Motivation
 
-This project was initiated as a personal learning exercise to strengthen my C++ skills
-through a concrete numerical problem.
+This project was initiated as a personal learning exercise to strengthen my C++ skills through a concrete numerical problem.
 
 The goal is to build a small but complete finite element pipeline: mesh definition, matrix assembly, boundary conditions and numerical solving, with an emphasis on code clarity and progressive design, without relying on external libraries.
 
