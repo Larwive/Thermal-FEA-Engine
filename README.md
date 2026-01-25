@@ -22,6 +22,34 @@ The engine solves a steady-state heat equation on a 2D triangular mesh:
 
 For a square domain discretized into two triangular elements, with a temperature of 100°C imposed on one corner and 15°C on the opposite corner, the solver computes a smooth temperature gradient across the domain.
 
+## Installation
+
+To build the project, you need CMake and a C++ compiler. Clone the repository and run:
+
+```bash
+mkdir build
+cd build
+cmake ..
+make
+```
+
+It will build a static library named `thermal_fea` and an executable named `thermal_fea_demo`.
+If you want a dynamic library, add `-DBUILD_SHARED_LIBS=ON` to the `cmake` command.
+
+## Installing the library (optional)
+
+The project provides standard CMake install rules, which is useful for
+system integration or packaging:
+```make install```
+
+To install into a custom directory:
+```make install DESTDIR=/path/to/staging```
+
+This installs:
+- the library under lib/
+- public headers under include/
+- the example executable under bin/
+
 ## Project status
 
 The project is currently functional and supports:
