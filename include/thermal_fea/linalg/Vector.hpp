@@ -17,6 +17,8 @@ public:
   double &operator()(std::size_t i);
 
   const double &operator()(std::size_t i) const;
+  
+  double &operator[](std::size_t i);
 
   double dot(const Vector &other) const;
 

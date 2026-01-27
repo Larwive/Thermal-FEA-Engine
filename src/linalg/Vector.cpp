@@ -11,6 +11,8 @@ std::size_t Vector::size() const { return data_.size(); }
 
 double &Vector::operator()(std::size_t i) { return data_[i]; }
 
+double &Vector::operator[](std::size_t i) { return data_[i]; }
+
 const double &Vector::operator()(std::size_t i) const { return data_[i]; }
 
 double Vector::dot(const Vector &other) const {
