@@ -58,3 +58,8 @@ install(DIRECTORY include/
 install(TARGETS thermal_fea_demo
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
+
+include(CTest)
+enable_testing()
+
+add_subdirectory(tests)
