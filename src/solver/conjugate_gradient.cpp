@@ -8,6 +8,9 @@ namespace thermal_fea::solver {
 thermal_fea::linalg::Vector
 conjugate_gradient(const thermal_fea::linalg::Matrix &A,
                    const thermal_fea::linalg::Vector &b) {
+  if (b.norm() < 1e-12) {
+    return thermal_fea::linalg::Vector(b.size()); // vecteur nul
+  }
   thermal_fea::linalg::Vector x(b.size());
   thermal_fea::linalg::Vector r = b - A * x;
   thermal_fea::linalg::Vector r_new(r.size());
