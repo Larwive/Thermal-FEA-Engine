@@ -15,7 +15,8 @@ else()
 endif()
 
 add_executable(tests_thermal_fea
-    test_linalg.cpp
+    test_linalg_vector.cpp
+    test_linalg_matrix.cpp
     test_mesh.cpp
     test_solver.cpp
 )
