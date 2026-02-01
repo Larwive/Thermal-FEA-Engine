@@ -1,5 +1,5 @@
 #include <cstddef>
-#include <vector>
+// #include <vector>
 
 #include "thermal_fea/linalg/Matrix.hpp"
 #include "thermal_fea/linalg/Vector.hpp"
@@ -10,12 +10,39 @@ size_t Matrix::rows() const { return rows_; }
 
 size_t Matrix::cols() const { return cols_; }
 
-double &Matrix::operator()(std::size_t i, std::size_t j) {
+/*double &Matrix::operator()(std::size_t i, std::size_t j) {
   return data_[i * cols_ + j];
+}*/
+
+/*const double &Matrix::operator()(std::size_t i, std::size_t j) const {
+  return data_[i * cols_ + j];
+  }*/
+static std::size_t key(std::size_t i, std::size_t j, std::size_t cols) {
+  return i * cols + j;
 }
 
-const double &Matrix::operator()(std::size_t i, std::size_t j) const {
-  return data_[i * cols_ + j];
+double Matrix::get(std::size_t i, std::size_t j) const {
+  auto it = data_.find(key(i, j, cols_));
+  return it == data_.end() ? 0.0 : it->second;
+}
+
+void Matrix::set(std::size_t i, std::size_t j, double v) {
+  if (std::abs(v) < eps)
+    erase(i, j);
+  else
+    insert_or_update(i, j, v);
+}
+
+void Matrix::insert_or_update(std::size_t i, std::size_t j, double v) {
+  data_[key(i, j, cols_)] = v;
+}
+
+void Matrix::erase(std::size_t i, std::size_t j) {
+  data_.erase(key(i, j, cols_));
+}
+
+double Matrix::operator()(std::size_t i, std::size_t j) const {
+  return get(i, j);
 }
 
 Vector operator*(const Matrix &A, const Vector &x) {
