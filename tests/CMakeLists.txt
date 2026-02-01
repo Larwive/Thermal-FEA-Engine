@@ -31,3 +31,12 @@ add_test(
   NAME thermal_fea_tests
   COMMAND $<TARGET_FILE:tests_thermal_fea>
 )
+
+add_executable(thermal_fea_perf
+        test_perf.cpp
+)
+
+target_link_libraries(thermal_fea_perf
+        PRIVATE
+        thermal_fea
+)
