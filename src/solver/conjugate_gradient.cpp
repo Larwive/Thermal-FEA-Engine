@@ -1,6 +1,7 @@
 #include <cmath>
 #include <iostream>
 
+#include <omp.h>
 
 #include "thermal_fea/linalg/Matrix.hpp"
 #include "thermal_fea/linalg/Vector.hpp"
