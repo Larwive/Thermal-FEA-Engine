@@ -1,6 +1,8 @@
 #include <cstddef>
 // #include <vector>
 
+#include <omp.h>
+
 #include "thermal_fea/linalg/Matrix.hpp"
 #include "thermal_fea/linalg/Vector.hpp"
 
@@ -49,8 +51,10 @@ Vector operator*(const Matrix &A, const Vector &x) {
   assert(A.cols() == x.size());
 
   Vector y(A.rows());
+#pragma omp parallel for
   for (std::size_t i = 0; i < A.rows(); ++i) {
     double sum = 0.0;
+#pragma omp simd reduction(+:sum)
     for (std::size_t j = 0; j < A.cols(); ++j) {
       sum += A(i, j) * x(j);
     }

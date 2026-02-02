@@ -11,6 +11,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+find_package(OpenMP REQUIRED)
+
 add_library(thermal_fea
     src/linalg/Matrix.cpp
     src/linalg/Vector.cpp
@@ -27,6 +29,8 @@ set_target_properties(thermal_fea PROPERTIES
 target_compile_options(thermal_fea PRIVATE
     -Wall -Wextra -Wpedantic
 )
+
+target_link_libraries(thermal_fea PUBLIC OpenMP::OpenMP_CXX)
 
 target_include_directories(thermal_fea
     PUBLIC

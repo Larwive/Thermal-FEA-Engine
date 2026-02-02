@@ -3,6 +3,8 @@
 #include <cstddef>
 #include <ostream>
 
+#include <omp.h>
+
 #include "thermal_fea/linalg/Vector.hpp"
 
 namespace thermal_fea::linalg {
@@ -18,6 +20,7 @@ const double &Vector::operator()(std::size_t i) const { return data_[i]; }
 double Vector::dot(const Vector &other) const {
   assert(size() == other.size());
   double s = 0.0;
+#pragma omp parallel for simd reduction(+:s)
   for (std::size_t i = 0; i < size(); ++i)
     s += data_[i] * other.data_[i];
   return s;
@@ -37,6 +40,7 @@ std::ostream &operator<<(std::ostream &os, const Vector &v) {
 Vector operator+(const Vector &a, const Vector &b) {
   assert(a.size() == b.size());
   Vector r(a.size());
+#pragma omp parallel for simd
   for (std::size_t i = 0; i < a.size(); ++i)
     r(i) = a(i) + b(i);
   return r;
@@ -45,6 +49,7 @@ Vector operator+(const Vector &a, const Vector &b) {
 Vector operator-(const Vector &a, const Vector &b) {
   assert(a.size() == b.size());
   Vector r(a.size());
+#pragma omp parallel for simd
   for (std::size_t i = 0; i < a.size(); ++i)
     r(i) = a(i) - b(i);
   return r;
@@ -52,6 +57,7 @@ Vector operator-(const Vector &a, const Vector &b) {
 
 Vector operator*(double alpha, const Vector &v) {
   Vector r(v.size());
+#pragma omp parallel for simd
   for (std::size_t i = 0; i < v.size(); ++i)
     r(i) = alpha * v(i);
   return r;
@@ -59,6 +65,7 @@ Vector operator*(double alpha, const Vector &v) {
 
 Vector &operator+=(Vector &a, const Vector &b) {
   assert(a.size() == b.size());
+#pragma omp parallel for simd
   for (std::size_t i = 0; i < a.size(); ++i)
     a(i) += b(i);
   return a;
