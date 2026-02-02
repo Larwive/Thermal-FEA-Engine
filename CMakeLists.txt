@@ -55,6 +55,13 @@ install(TARGETS thermal_fea
     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
 )
 
+install(DIRECTORY include/
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+)
+
+install(TARGETS thermal_fea_demo
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+)
 
 include(CTest)
 enable_testing()
