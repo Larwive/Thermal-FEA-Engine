@@ -11,6 +11,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+if(APPLE)
+    # Needed to make CMake find Homebrew's OpenMP on Apple Silicon.
+    list(APPEND CMAKE_PREFIX_PATH "/opt/homebrew/opt/libomp")
+endif()
+
 find_package(OpenMP REQUIRED)
 
 add_library(thermal_fea
